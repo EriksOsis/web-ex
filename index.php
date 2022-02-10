@@ -6,7 +6,7 @@ $limit = 50;
 $from = $_GET['from'] ?? "";
 $to = $_GET['to'] ?? "";
 
-$q = json_decode(file_get_contents("https://data.gov.lv/dati/lv/api/3/action/datastore_search?q=$search&offset=$offset&resource_id=8ea0ee31-1bea-4336-bbe4-2e66ccdadd1b&limit=$limit"));
+$q = json_decode(file_get_contents("https://data.gov.lv/dati/lv/api/3/action/datastore_search?&offset=$offset&resource_id=d499d2f0-b1ea-4ba2-9600-2c701b03bd4a&limit=$limit"));
 
 ?>
 <html>
@@ -36,25 +36,22 @@ $q = json_decode(file_get_contents("https://data.gov.lv/dati/lv/api/3/action/dat
     </thead>
     <tbody>
     <?php foreach ($q->result->records as $record): ?>
-        <?php if (strtotime($record->date) >= strtotime($from) && strtotime($record->date) <= strtotime($to)): ?>
-        <tr>
-            <td>
-                <?php echo date_format(date_create(substr($record->date, 0, "15")), "dd-mm-yyyy"); ?>
-            </td>
-            <td>
-                <?php echo $record->id;?>
-            </td>
-            <td>
-                <?php echo $record->date; ?>
-            </td>
-            <td>
-                <?php echo $record->country; ?>
-            </td>
-            <td>
-                <?php echo $record->sick; ?>
-            </td>
-        </tr>
-    <?php endif; ?>
+        <?php if (strtotime($record->Datums) >= strtotime($from) && strtotime($record->Datums) <= strtotime($to)): ?>
+            <tr>
+                <td>
+                    <?php echo date_format(date_create(substr($record->date, 0, "15")), "dd-mm-yyyy"); ?>
+                </td>
+                <td>
+                    <?php echo $record->TestuSkaits; ?>
+                </td>
+                <td>
+                    <?php echo $record->ApstiprinataCOVID19InfekcijaSkaits; ?>
+                </td>
+                <td>
+                    <?php echo $record->Ipatsvars; ?>
+                </td>
+            </tr>
+        <?php endif; ?>
     <?php endforeach; ?>
     </tbody>
 </table>
