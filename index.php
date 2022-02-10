@@ -22,16 +22,16 @@ $q = json_decode(file_get_contents("https://data.gov.lv/dati/lv/api/3/action/dat
 <table border="dotted">
     <thead>
     <th>
-        ID
-    </th>
-    <th>
         Datums
     </th>
     <th>
-        Valstu skaits
+        Testu skaits
     </th>
     <th>
-        saslimušie 14 dienās
+        Apstiprinātie
+    </th>
+    <th>
+        Īpatsvars
     </th>
     </thead>
     <tbody>
